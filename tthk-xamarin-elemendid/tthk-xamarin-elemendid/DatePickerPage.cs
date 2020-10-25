@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace tthk_xamarin_elemendid
 {
@@ -23,7 +18,7 @@ namespace tthk_xamarin_elemendid
             {
                 MinimumDate = new DateTime(2000, 1, 1),
                 MaximumDate = DateTime.Today + TimeSpan.FromDays(365),
-                Format = "d",
+                Format = @"dd.MM.yyyy",
                 Date = DateTime.Today
             };
             _timePicker = new TimePicker()
@@ -36,14 +31,16 @@ namespace tthk_xamarin_elemendid
                 Text = "Näita teade"
             };
             button.Clicked += ShowButtonClicked;
-            View[] views = new View[] { _timePicker, _datePicker };
+            View[] views = new View[] { _datePicker, _timePicker, button};
             foreach (var view in views) flexLayout.Children.Add(view); // Can be defined using Linq
             Content = flexLayout;
         }
 
         private async void ShowButtonClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Kuupäev ja aeg", $"Kuupäev: {_datePicker.Date}\nAeg: {_timePicker.Time}", "OK");
+            await DisplayAlert("Kuupäev ja aeg", 
+                $"Kuupäev: {_datePicker.Date.ToString(@"dd.MM.yyyy")}\n" +
+                $"Aeg: {_timePicker.Time.ToString(@"hh\:mm")}", "OK");
         }
     }
 }
