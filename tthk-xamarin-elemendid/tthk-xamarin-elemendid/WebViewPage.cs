@@ -31,7 +31,7 @@ namespace tthk_xamarin_elemendid
                     Source = buttonsIcons[i],
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     HeightRequest = 50,
-                    Padding = 10
+                    Padding = 15
                 };
                 buttonsLayout.Children.Add(buttons[i]);
             }
