@@ -10,13 +10,13 @@ namespace tthk_xamarin_elemendid
         List<Button> buttons = new List<Button>();
         string[] buttonNames = new string[] { "Entry/Editor", "ListView", "DatePicker", "TableView", "WebView", "Timer", "ProgressBarPage"};
         Page[] pages = new Page[] { new EntryPage(), new ListViewPage(), new DatePickerPage(), new TableViewPage(), new WebViewPage(), new TimerPage(), new ProgressBarPage()};
-        StackLayout stackLayout = new StackLayout();
+        StackLayout stackLayout = new StackLayout() { Margin = new Thickness(0, 20) };
         public MainPage()
         {
             Title = "Elemendid";
             for (int i = 0; i < buttonNames.Length; i++)
             {
-                Button xbutton = new Button { Text = buttonNames[i]};
+                Button xbutton = new Button { Text = buttonNames[i], Margin = new Thickness(20, 0) };
                 xbutton.Clicked += AnyButtonClicked;
                 buttons.Add(xbutton);
                 stackLayout.Children.Add(xbutton);

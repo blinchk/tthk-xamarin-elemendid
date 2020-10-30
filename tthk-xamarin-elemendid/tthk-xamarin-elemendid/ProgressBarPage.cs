@@ -9,12 +9,14 @@ namespace tthk_xamarin_elemendid
 {
 	public class ProgressBarPage : ContentPage
     {
-        private readonly ProgressBar _progressBar;
-        private readonly Label sliderPositionLabel;
-        private readonly Slider slider;
+        readonly ProgressBar _progressBar;
+        readonly Label sliderPositionLabel;
+        readonly Slider slider;
+        readonly Picker picker;
+        Easing selectedAnimation;
         public ProgressBarPage()
         {
-           
+            selectedAnimation = Easing.BounceIn;
             _progressBar = new ProgressBar()
             {
                 ProgressColor = Color.DeepPink,
@@ -39,7 +41,7 @@ namespace tthk_xamarin_elemendid
             };
             slider = new Slider()
             {
-                Maximum = 1000,
+                Maximum = 5000,
                 Minimum = 200,
                 MinimumTrackColor = Color.DeepPink,
                 MaximumTrackColor = Color.DeepSkyBlue,
@@ -50,6 +52,13 @@ namespace tthk_xamarin_elemendid
             {
                 Text = slider.Value.ToString()
             };
+            Easing[] pickerAnimations = new[] { Easing.BounceIn, Easing.BounceOut, Easing.CubicIn, Easing.CubicInOut, Easing.CubicOut, Easing.Linear, Easing.SinIn, Easing.SinInOut, Easing.SinOut, Easing.SpringIn, Easing.SpringOut };
+            picker = new Picker()
+            {
+                SelectedIndex = 0,
+                ItemsSource = pickerAnimations
+            };
+            picker.SelectedIndexChanged += PickerSelectedIndexChanged;
             StackLayout sliderLayout = new StackLayout()
             {
                 Orientation = StackOrientation.Horizontal,
@@ -58,9 +67,14 @@ namespace tthk_xamarin_elemendid
             };
             StackLayout stackLayout = new StackLayout()
             {
-                Children = { buttonsLayout, sliderLayout, _progressBar }
+                Children = { buttonsLayout, picker, sliderLayout, _progressBar }
             };
             Content = stackLayout;
+        }
+
+        private void PickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedAnimation = picker.SelectedItem as Easing;
         }
 
         private void SliderValueChanged(object sender, ValueChangedEventArgs e)
@@ -75,7 +89,7 @@ namespace tthk_xamarin_elemendid
 
         private async void StartButtonClicked(object sender, EventArgs e)
         {
-            await _progressBar.ProgressTo(1.0, (uint)slider.Value, Easing.BounceOut);
+            await _progressBar.ProgressTo(1.0, (uint)slider.Value, selectedAnimation);
         }
     }
 }
