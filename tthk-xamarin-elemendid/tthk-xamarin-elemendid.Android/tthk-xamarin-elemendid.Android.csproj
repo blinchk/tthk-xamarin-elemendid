@@ -90,9 +90,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\tthk-xamarin-elemendid\tthk-xamarin-elemendid.csproj">
       <Project>{3A59587D-06A4-4754-BA12-85AEC0BE05FE}</Project>
