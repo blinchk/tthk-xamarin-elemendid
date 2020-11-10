@@ -8,8 +8,8 @@ namespace tthk_xamarin_elemendid
     public partial class MainPage : ContentPage
     {
         List<Button> buttons = new List<Button>();
-        string[] buttonNames = new string[] { "Entry/Editor", "ListView", "DatePicker", "TableView", "WebView", "Timer", "ProgressBarPage"};
-        Page[] pages = new Page[] { new EntryPage(), new ListViewPage(), new DatePickerPage(), new TableViewPage(), new WebViewPage(), new TimerPage(), new ProgressBarPage()};
+        string[] buttonNames = new string[] { "Entry/Editor", "ListView", "DatePicker", "TableView", "WebView", "Timer", "ProgressBarPage", "VibrationPage"};
+        Page[] pages = new Page[] { new EntryPage(), new ListViewPage(), new DatePickerPage(), new TableViewPage(), new WebViewPage(), new TimerPage(), new ProgressBarPage() };
         StackLayout stackLayout = new StackLayout() { Margin = new Thickness(0, 20) };
         public MainPage()
         {
